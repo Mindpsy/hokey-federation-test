@@ -1,0 +1,1 @@
+export {default as vHeader} from './ui/vHeader.vue'
