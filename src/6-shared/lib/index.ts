@@ -1,1 +1,1 @@
-export { ROUTE, type IRoute } from './router'
+export { ROUTE, type IRoute, REDIRECT_REASON, type REDIRECT_REASON as RedirectReason } from './router'

@@ -1,7 +1,7 @@
 import type { UserModule } from '../types'
-import { createPinia } from 'pinia'
+import { createPinia, type Pinia } from 'pinia'
 
-let pinia: ReturnType<typeof createPinia>
+let pinia: Pinia
 
 // Setup Pinia
 // https://pinia.vuejs.org/

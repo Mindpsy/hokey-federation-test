@@ -4,6 +4,10 @@ export interface ApiOptions {
   controller?: string
 }
 
+export interface ApiHeaders {
+  [key: string]: string
+}
+
 export class Api {
   public readonly apiURL: string
   public readonly baseURL: string
@@ -15,7 +19,7 @@ export class Api {
     this.controller = options.controller ?? ''
   }
 
-  public getHeaders() {
+  public getHeaders(): ApiHeaders {
     return {
     //   'Authorization': `Bearer ${storage.get(STORAGE_KEY.accessToken)}`,
     //   'Accept-Language': storage.get(STORAGE_KEY.locale) ?? readBrowserLocale(),

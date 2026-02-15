@@ -2,9 +2,15 @@
 import { computed } from 'vue'
 import { ROUTE } from '~shared/lib'
 
+export interface NavLink {
+  text: string
+  href: string
+  isNative?: boolean
+}
+
 const props = defineProps<{
   text?: string
-  navLinks?: Array<{ text: string, href: string , isNative?: boolean }>
+  navLinks?: NavLink[]
 }>()
 
 const links = computed(() => props.navLinks || [])

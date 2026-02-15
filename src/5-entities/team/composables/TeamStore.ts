@@ -1,12 +1,13 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
+import { ref, type Ref } from 'vue'
 import { Cities } from '~entities/city'
 import { Team } from '~entities/team'
 import { TeamService } from '~entities/team'
 
 export const useTeam = defineStore('team', () => {
     const teamService = new TeamService()
-    const teams: Ref<Array<Team>> = ref([])
-    const mockTeams: Array<Team> = [
+    const teams: Ref<Team[]> = ref([])
+    const mockTeams: Team[] = [
         new Team({
             id: '1',
             name: 'Team Alpha',
@@ -27,14 +28,13 @@ export const useTeam = defineStore('team', () => {
         }),
     ]
 
-    async function getTeams() {
+    async function getTeams(): Promise<Team[]> {
         return mockTeams
-        return teams.value = await teamService.getTeamsList()
+        // return teams.value = await teamService.getTeamsList()
     }
 
     return {
         teams,
-        
         getTeams
     }
 })

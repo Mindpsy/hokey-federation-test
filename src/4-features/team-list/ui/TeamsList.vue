@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
-import { Cities } from '~entities/city';
+import { ref, computed, type Ref } from 'vue'
+import { Cities } from '~entities/city'
 import { TeamDTO } from '~entities/team'
 
 const props = withDefaults(
   defineProps<{
-    teams: Array<TeamDTO>
+    teams: TeamDTO[]
     isLoading?: boolean
     showFilter?: boolean
     showSort?: boolean
@@ -18,9 +18,9 @@ const props = withDefaults(
   }
 )
 
-const queryFilter = ref('')
+const queryFilter: Ref<string> = ref('')
 
-const filteredAndSortedTeams = computed(() => {
+const filteredAndSortedTeams = computed<TeamDTO[]>(() => {
   let result = [...props.teams]
 
   if (queryFilter.value) {
@@ -35,12 +35,12 @@ const filteredAndSortedTeams = computed(() => {
   return result
 })
 
-const maxPoints = computed(() => {
+const maxPoints = computed<number>(() => {
   if (filteredAndSortedTeams.value.length === 0) return 0
   return Math.max(...filteredAndSortedTeams.value.map(team => team.points))
 })
 
-const isLeader = (points: number) => points === maxPoints.value
+const isLeader = (points: number): boolean => points === maxPoints.value
 </script>
 
 <template>

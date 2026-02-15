@@ -1,1 +1,1 @@
-export {default as vHeader} from './ui/vHeader.vue'
+export { default as vHeader, type NavLink } from './ui/vHeader.vue'

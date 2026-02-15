@@ -19,12 +19,9 @@
       "vite/client",
       "unplugin-vue-router/client",
       "vite-plugin-vue-layouts/client",
-      "@total-typescript/ts-reset",
       "./src/1-app/types.d.ts",
-      "./src/1-app/shims.d.ts",
       "./src/1-app/typed-router.d.ts",
-      "./src/1-app/auto-imports.d.ts",
-      "./src/1-app/potree.d.ts"
+      "./src/1-app/auto-imports.d.ts"
     ],
     "allowJs": true,
     "strict": true,

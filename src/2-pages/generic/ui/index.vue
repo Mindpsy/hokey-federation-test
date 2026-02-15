@@ -5,17 +5,23 @@ definePage({
   },
 });
 
+import { ref, type Ref } from 'vue'
+
 interface Player {
-  name: string;
-  goals: number;
+  name: string
+  goals: number
 }
 
-import { ref } from 'vue';
+interface StatsResult {
+  min: number
+  max: number
+  average: number
+}
 
-const players = ref<Player[]>([]);
-const newName = ref('');
-const newGoals = ref<number | string>(0);
-const statsResult = ref<{ min: number; max: number; average: number } | null>(null);
+const players: Ref<Player[]> = ref([])
+const newName: Ref<string> = ref('')
+const newGoals: Ref<number | string> = ref(0)
+const statsResult: Ref<StatsResult | null> = ref(null)
 
 function addPlayer() {
   const name = newName.value.trim();

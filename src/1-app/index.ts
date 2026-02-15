@@ -32,4 +32,7 @@ export const app = createApp(App)
   .use(router)
 
 const modules = import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true })
-Object.values(modules).forEach(i => i.install?.({ app, router }))
+Object.values(modules).forEach((module) => {
+  const mod = module as { install: UserModule }
+  mod.install?.({ app, router })
+})
