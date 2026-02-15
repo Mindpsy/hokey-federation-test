@@ -1,14 +1,9 @@
 <script lang="ts" setup>
-import { vHeader } from '~widgets/header'
 
-const navLinks = [
-    { text: 'Teams', href: '/teams-list' },
-]
 </script>
 
 <template>
   <main class="home">
-    <vHeader text="Hokey Federation Test" :nav-links="navLinks"/>
     <div class="home__page">
       <RouterView/>
     </div>
@@ -18,7 +13,7 @@ const navLinks = [
 <style lang="scss" scoped>
 .home {
   &__page {
-    padding: 20px;
+    padding: 0px 40px 0px 40px;
   }
 }
 </style>

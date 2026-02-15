@@ -11,19 +11,19 @@ export const useTeam = defineStore('team', () => {
             id: '1',
             name: 'Team Alpha',
             city: Cities.Moscow.toString(),
-            points: '100',
+            points: 100,
         }),
         new Team({
             id: '2',
             name: 'Team Beta',
             city: Cities.SaintPetersburg.toString(),
-            points: '80',
+            points: 80,
         }),
         new Team({
             id: '3',
             name: 'Team Gamma',
             city: Cities.Kazan.toString(),
-            points: '60',
+            points: 60,
         }),
     ]
 

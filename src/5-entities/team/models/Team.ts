@@ -4,7 +4,7 @@ export class Team {
     id: string
     name: string
     city: string
-    points: string
+    points: number
 
     constructor(dto: TeamDTO) {
         this.id = dto.id

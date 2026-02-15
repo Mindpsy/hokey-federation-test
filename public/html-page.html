@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хоккейное табло</title>
+    <style>
+        /*Не стал подключать отдельным файлом*/
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #2b3a4a, #1d2a35);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 16px;
+        }
+
+        .scoreboard {
+            background: #2c3e50;
+            border-radius: 24px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 1000px;
+            color: white;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-bottom: 20px;
+            border: none;
+            outline: inherit;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        .back-button:active {
+            transform: scale(0.98);
+        }
+
+        .back-button .arrow {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .teams {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .team {
+            text-align: center;
+            background: #34495e;
+            border-radius: 20px;
+            padding: 20px 16px;
+            transition: background 0.3s ease;
+        }
+
+        .team.leading {
+            background: #27ae60;
+        }
+
+        .team:not(.leading).tied {
+            background: #7f8c8d;
+        }
+
+        .team-name {
+            font-size: clamp(1rem, 4vw, 2rem);
+            font-weight: bold;
+            margin-bottom: 16px;
+            word-break: break-word;
+        }
+
+        .score-display {
+            font-size: clamp(2rem, 10vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 8px 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            width: clamp(44px, 10vw, 64px);
+            height: clamp(44px, 10vw, 64px);
+            border-radius: 50%;
+            border: none;
+            background: #ecf0f1;
+            color: #2c3e50;
+            font-size: clamp(1.6rem, 5vw, 2.6rem);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: #bdc3c7;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .separator {
+            font-size: clamp(2rem, 10vw, 4rem);
+            font-weight: 800;
+            color: #ecf0f1;
+            text-align: center;
+        }
+
+        @media (max-width: 450px) {
+            .scoreboard {
+                padding: 20px 12px;
+            }
+            .team {
+                padding: 16px 8px;
+            }
+            .controls {
+                gap: 12px;
+            }
+            .back-button {
+                margin-bottom: 16px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="scoreboard">
+            <button class="back-button" @click="goBack">
+                <span class="arrow">←</span>
+                <span>Назад</span>
+            </button>
+
+            <div class="teams">
+                <div class="team" :class="teamAClass">
+                    <div class="team-name">{{ teamA.name }}</div>
+                    <div class="score-display">{{ teamA.score }}</div>
+                    <div class="controls">
+                        <button class="btn" @click="changeScore('A', 1)">+</button>
+                        <button class="btn" @click="changeScore('A', -1)" :disabled="teamA.score <= 0">–</button>
+                    </div>
+                </div>
+
+                <div class="separator">:</div>
+
+                <div class="team" :class="teamBClass">
+                    <div class="team-name">{{ teamB.name }}</div>
+                    <div class="score-display">{{ teamB.score }}</div>
+                    <div class="controls">
+                        <button class="btn" @click="changeScore('B', 1)">+</button>
+                        <button class="btn" @click="changeScore('B', -1)" :disabled="teamB.score <= 0">–</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        const app = createApp({
+            setup() {
+                const teamA = ref({
+                    name: '«Медведи»',
+                    score: 3
+                });
+                const teamB = ref({
+                    name: '«Пантеры»',
+                    score: 2
+                });
+
+                const changeScore = (team, delta) => {
+                    if (team === 'A') {
+                        const newScore = teamA.value.score + delta;
+                        if (newScore >= 0) teamA.value.score = newScore;
+                    } else {
+                        const newScore = teamB.value.score + delta;
+                        if (newScore >= 0) teamB.value.score = newScore;
+                    }
+                };
+
+                const teamAClass = computed(() => {
+                    if (teamA.value.score > teamB.value.score) return 'leading';
+                    if (teamA.value.score === teamB.value.score) return 'tied';
+                    return '';
+                });
+
+                const teamBClass = computed(() => {
+                    if (teamB.value.score > teamA.value.score) return 'leading';
+                    if (teamA.value.score === teamB.value.score) return 'tied';
+                    return '';
+                });
+
+                const goBack = () => {
+                    window.history.back();
+                };
+
+                return {
+                    teamA,
+                    teamB,
+                    changeScore,
+                    teamAClass,
+                    teamBClass,
+                    goBack
+                };
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

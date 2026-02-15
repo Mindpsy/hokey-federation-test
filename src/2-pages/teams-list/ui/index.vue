@@ -19,7 +19,7 @@ definePage({
 
 <template>
   <h1>Список команд</h1>
-  <TeamsList :teams/>
+  <TeamsList :teams :showFilter="true" />
 </template>
 
 <style lang="scss" scoped>
