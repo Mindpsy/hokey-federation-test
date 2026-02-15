@@ -1,38 +1,232 @@
-# vue-project
+# Hockey Federation Test
 
-This template should help get you started developing with Vue 3 in Vite.
+Тестовое задание, демонстрирующее практические навыки работы с современным стеком фронтенд-разработки на примере веб-приложения для управления хоккейными командами.
 
-## Recommended IDE Setup
+## 🎯 Демонстрируемые навыки
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Архитектура приложения** — чистая архитектура с разделением по слоям (FSD методология)
+- **Управление состоянием** — использование Pinia для централизованного хранилища
+- **Типизация** — полная типизация TypeScript с использованием generics и interfaces
+- **Компонентный дизайн** — переиспользуемые Vue 3 компоненты с Composition API
+- **API интеграция** — кастомный ApiService с обработкой ошибок и mock данными
+- **Стилизация** — адаптивный дизайн с SCSS, медиа-запросы
 
-## Recommended Browser Setup
+## 🛠️ Технологический стек
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Frontend Framework:** Vue 3 (Composition API)
+- **Language:** TypeScript
+- **Build Tool:** Vite
+- **State Management:** Pinia
+- **Routing:** Vue Router
+- **HTTP Client:** Axios + ofetch
+- **Styling:** SCSS
+- **API Client:** Custom ApiService с обработкой ошибок
 
-## Customize configuration
+## 📁 Структура проекта
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Проект использует чистую архитектуру с разделением по слоям:
 
-## Project Setup
+```
+src/
+├── 1-app/              # Приложение (layouts, конфигурация)
+├── 2-pages/            # Страницы (роутинг)
+├── 3-widgets/          # Глобальные виджеты (header, footer)
+├── 4-features/         # Бизнес-логика (team-list)
+├── 5-entities/         # Домены и сервисы (team, city)
+└── 6-shared/           # Общий код (API, config, utils)
+```
+
+**Ключевые модули:**
+
+- `5-entities/team/` — модель Team с API и Pinia store
+- `4-features/team-list/` — компонент списка команд с фильтрацией
+- `6-shared/api/` — базовый ApiService с обработкой ошибок
+- `3-widgets/header/` — компонент шапки приложения
+
+## 🚀 Быстрый старт
+
+### Установка зависимостей
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Разработка
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Приложение откроется на `http://localhost:5173`
+
+### Production сборка
 
 ```sh
 npm run build
 ```
+
+Оптимизированный build будет в папке `dist/`
+
+### Preview build
+
+```sh
+npm run preview
+```
+
+## 📋 Реализованные страницы
+
+| Страница | Путь | Особенности |
+|----------|------|---------|
+| Список команд | `/teams-list` | Компонент с фильтрацией, сортировкой, выделением лидера; синхронизация данных через Pinia |
+| Демо-калькулятор | `/generic` | Generic функции TypeScript для расчета статистики; добавление/удаление элементов |
+| Интерактивное табло | `/html-page.html` | Vanilla JS/Vue 3, управление счетом матча, адаптивный дизайн |
+| 404 Страница | `/...404` | Обработка неправильных маршрутов |
+
+## ✨ Особенности реализации
+
+### Type-безопасность
+- Использование `interface` для описания моделей данных (`TeamDTO`, `Team`)
+- Generic типы в функциях расчета статистики для переиспользования логики
+- Полная типизация всех компонентов и сервисов
+
+### Управление состоянием
+- Pinia store с async функциями для получения данных
+- Mock-данные для демонстрации без реального API
+- Реактивные вычисляемые свойства (`computed`) для фильтрации и сортировки
+
+### Компонентная архитектура
+- Разделение на слои: entities → features → pages → app
+- Переиспользуемые компоненты (`TeamsList`, `vHeader`)
+- Props и computed для управления состоянием компонента
+
+### Адаптивность
+- Медиа-запросы для мобильных устройств
+- Flexbox и Grid для скелета макета
+- Отзывчивые шрифты с `clamp()`
+
+## 🔧 Рекомендуемая среда разработки
+
+- **IDE:** [VS Code](https://code.visualstudio.com/)
+- **Расширения:**
+  - [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (отключить Vetur)
+  - [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
+
+## 🌐 DevTools для отладки
+
+### Chrome/Edge/Brave
+- [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+- Включить Custom Object Formatter в Chrome DevTools
+
+### Firefox
+- [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+
+## ⚙️ Конфигурация
+
+- **Vite:** [vite.config.js](vite.config.js)
+- **TypeScript:** [tsconfig.json](tsconfig.json)
+- **API Base URL:** устанавливается через `ENV_PROJECT_SERVER_URL`
+
+## 📝 Примеры реализации
+
+### Использование Pinia Store с async логикой
+
+```typescript
+// TeamStore.ts
+export const useTeam = defineStore('team', () => {
+    const teamService = new TeamService()
+    
+    async function getTeams() {
+        // В тестовом задании используются mock-данные
+        return mockTeams
+        // return await teamService.getTeamsList()
+    }
+    
+    return { teams, getTeams }
+})
+```
+
+### Generic функция для расчета статистики
+
+```typescript
+// Демонстрирует использование generics для переиспользуемой логики
+const calculateStats = <T,>(
+  items: T[],
+  extractor: (item: T) => number
+): { min: number; max: number; average: number } | null => {
+  if (items.length === 0) return null
+  const numbers = items.map(extractor)
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers),
+    average: numbers.reduce((a, b) => a + b, 0) / numbers.length,
+  }
+}
+
+// Используется для разных типов данных
+calculateStats(players.value, (p) => p.goals)
+```
+
+### Компонент с фильтрацией (Composition API)
+
+```typescript
+// Демонстрирует ref, computed, обработку событий
+const queryFilter = ref('')
+
+const filteredAndSortedTeams = computed(() => {
+  let result = [...props.teams]
+  
+  if (queryFilter.value) {
+    const filter = queryFilter.value.toLowerCase()
+    result = result.filter(team => team.name.toLowerCase().includes(filter))
+  }
+  
+  return result
+})
+```
+
+## ⚡ Данные в тестовом задании
+
+В текущей версии используются **mock-данные** для демонстрации функциональности:
+
+```typescript
+const mockTeams: Array<Team> = [
+    new Team({ id: '1', name: 'Team Alpha', city: 'Moscow', points: 100 }),
+    new Team({ id: '2', name: 'Team Beta', city: 'Saint-Petersburg', points: 80 }),
+    new Team({ id: '3', name: 'Team Gamma', city: 'Kazan', points: 60 }),
+]
+```
+
+Для подключения реального API необходимо:
+- Развернуть backend сервер
+- Задать `ENV_PROJECT_SERVER_URL` в переменных окружения
+- Раскомментировать вызов `teamService.getTeamsList()` в store
+
+## 📦 Зависимости
+
+Основные пакеты:
+- `vue@3` — UI фреймворк (Composition API)
+- `pinia` — управление состоянием
+- `vue-router` — SPA маршрутизация
+- `typescript` — статическая типизация
+- `vite` — быстрая сборка и HMR
+- `axios` + `ofetch` — HTTP клиенты
+- `sass` — препроцессор для стилей
+
+## 📄 О тестовом задании
+
+Это тестовое задание демонстрирует:
+
+✅ Знание современных фронтенд фреймворков (Vue 3)  
+✅ Умение писать типизированный код (TypeScript, generics)  
+✅ Применение архитектурных паттернов (FSD, чистая архитектура)  
+✅ Работа с управлением состоянием (Pinia)  
+✅ Создание адаптивного UI (SCSS, медиа-запросы)  
+✅ Интеграция с API (ApiService, обработка ошибок)  
+
+## 📚 Лицензия
+
+MIT
+
+---
+
+Тестовое задание выполнено с использованием современных лучших практик фронтенд-разработки.
