@@ -1,7 +1,4 @@
 <script setup>
-import { vHeader } from '~widgets/header';
-
-
 </script>
 
 <template>
@@ -9,8 +6,5 @@ import { vHeader } from '~widgets/header';
 </template>
 
 <style lang="scss" scoped>
-.home {
-  /* */
-  display: inherit;
-} 
+ 
 </style>

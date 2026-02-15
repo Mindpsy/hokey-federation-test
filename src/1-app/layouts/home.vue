@@ -10,7 +10,6 @@ const navLinks = [
   <main class="home">
     <vHeader text="Hokey Federation Test" :nav-links="navLinks"/>
     <div class="home__page">
-      <p>Home layout</p>
       <RouterView/>
     </div>
   </main>
