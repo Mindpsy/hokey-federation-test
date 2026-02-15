@@ -1,4 +1,12 @@
 <script lang="ts" setup>
+import { NavigationFailure } from 'vue-router';
+import { ROUTE, type IRoute } from '~shared/lib'
+const router = useRouter()
+
+function navigateTo(route: IRoute): Promise<void | NavigationFailure | undefined> | void | string | undefined {
+  return route.isNative ? (window.location.href = route.path) : router.push(route.path)
+}
+
 definePage({
   meta: {
     layout: 'home',
@@ -18,7 +26,7 @@ definePage({
     </section>
 
     <div class="tasks-grid">
-      <article class="task-card">
+      <article class="task-card" @click="navigateTo(ROUTE.teamsList)">
         <h2 class="task-card__title">Задание 1. Vue 3 (SPA-компонент)</h2>
         <p class="task-card__description">
           Создайте компонент Vue 3 на Composition API, который отображает список хоккейных команд (поля: название, город, очки). Реализуйте:
@@ -37,7 +45,7 @@ definePage({
         </ul>
       </article>
 
-      <article class="task-card">
+      <article class="task-card" @click="navigateTo(ROUTE.generic)">
         <h2 class="task-card__title">Задание 2. TypeScript — статистика с дженериками</h2>
         <p class="task-card__description">
           Напишите функцию на TypeScript <code>calculateStats</code>, которая принимает массив элементов любого типа T и функцию extractor, которая преобразует элемент типа T в число. Функция должна возвращать объект со статистикой — минимальное, максимальное и среднее значение, вычисленные по числам, полученным из элементов массива с помощью extractor.
@@ -52,7 +60,7 @@ definePage({
         </figure>
       </article>
 
-      <article class="task-card">
+      <article class="task-card" @click="navigateTo(ROUTE.html)">
         <h2 class="task-card__title">Задание 3. Общее (HTML/CSS + логика)</h2>
         <p class="task-card__description">
           Сделайте простую веб-страницу с HTML и CSS, на которой отображается табло хоккейного матча:

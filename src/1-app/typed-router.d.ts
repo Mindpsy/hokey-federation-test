@@ -30,6 +30,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/generic/': RouteRecordInfo<
+      '/generic/',
+      '/generic',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/teams-list/': RouteRecordInfo<
       '/teams-list/',
       '/teams-list',
@@ -53,6 +60,12 @@ declare module 'vue-router/auto-routes' {
     'src/2-pages/index/ui/index.vue': {
       routes:
         | '//'
+      views:
+        | never
+    }
+    'src/2-pages/generic/ui/index.vue': {
+      routes:
+        | '/generic/'
       views:
         | never
     }

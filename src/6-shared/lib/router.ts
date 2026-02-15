@@ -6,5 +6,12 @@ export enum REDIRECT_REASON {
 
 export const ROUTE = {
     home: { path: '/'},
-    teamsList: { path: 'teams-list'}
+    teamsList: { path: 'teams-list'},
+    html: { path: 'html-page.html', isNative: true },
+    generic: { path: 'generic' },
+}
+
+export interface IRoute {
+  path: string
+  isNative?: boolean
 }

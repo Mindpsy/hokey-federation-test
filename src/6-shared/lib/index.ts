@@ -1,1 +1,1 @@
-export { ROUTE } from './router'
+export { ROUTE, type IRoute } from './router'

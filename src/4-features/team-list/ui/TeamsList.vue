@@ -60,21 +60,17 @@ const isLeader = (points: number) => points === maxPoints.value
       </div>
     </div>
 
-    <!-- Лоадер -->
     <div v-if="isLoading" class="loader">
       <span>Загрузка...</span>
     </div>
 
-    <!-- Таблица команд -->
     <div v-else-if="filteredAndSortedTeams.length" class="teams-table">
-      <!-- Заголовок таблицы (опционально) -->
       <div class="teams-table__header">
         <div class="teams-table__header-cell">Команда</div>
         <div class="teams-table__header-cell">Город</div>
         <div class="teams-table__header-cell">Очки</div>
       </div>
 
-      <!-- Строки команд -->
       <div
         v-for="team in filteredAndSortedTeams"
         :key="team.id"
@@ -87,7 +83,6 @@ const isLeader = (points: number) => points === maxPoints.value
       </div>
     </div>
 
-    <!-- Сообщение, если ничего не найдено -->
     <p v-else class="no-results">Команды не найдены</p>
   </div>
 </template>
@@ -138,7 +133,6 @@ const isLeader = (points: number) => points === maxPoints.value
   color: #64748b;
 }
 
-/* Таблица */
 .teams-table {
   display: flex;
   flex-direction: column;
@@ -148,7 +142,6 @@ const isLeader = (points: number) => points === maxPoints.value
   background: white;
 }
 
-/* Заголовок таблицы */
 .teams-table__header {
   display: grid;
   grid-template-columns: 2fr 1fr 0.8fr;
@@ -163,7 +156,6 @@ const isLeader = (points: number) => points === maxPoints.value
   padding: 0 0.5rem;
 }
 
-/* Строка команды */
 .team-row {
   display: grid;
   grid-template-columns: 2fr 1fr 0.8fr;
@@ -180,7 +172,6 @@ const isLeader = (points: number) => points === maxPoints.value
     background-color: #f1f5f9;
   }
 
-  /* Подсветка лидера */
   &--leader {
     background: #fef9e7;
     border-left: 4px solid #fbbf24;
@@ -189,7 +180,6 @@ const isLeader = (points: number) => points === maxPoints.value
   }
 }
 
-/* Ячейки */
 .team-row__cell {
   padding: 0 0.5rem;
   overflow: hidden;
@@ -211,18 +201,15 @@ const isLeader = (points: number) => points === maxPoints.value
   }
 }
 
-/* Адаптивность: на узких экранах превращаем таблицу в карточки */
 @media (max-width: 640px) {
   .container {
     padding: 1rem;
   }
 
-  /* Убираем заголовок таблицы */
   .teams-table__header {
     display: none;
   }
 
-  /* Каждая строка становится карточкой с вертикальным расположением */
   .team-row {
     display: flex;
     flex-direction: column;
