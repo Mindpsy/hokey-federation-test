@@ -87,7 +87,7 @@ definePage({
           </div>
           <div class="ui-task-item">
             <a href="https://dashlite.net/demo4/components/forms/form-elements.html" target="_blank" rel="noopener" class="ui-task-link">
-              Перенести во Vue компоненты кнопок из выделенного блока
+              Перенести во Vue компоненты элементов из выделенного блока
             </a>
             <figure class="ui-task-image">
               <img src="/public/images/Picture3.png" alt="Пример форм">
