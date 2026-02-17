@@ -11,7 +11,8 @@ export interface IRoute {
 
 export const ROUTE: Record<string, IRoute> = {
     home: { path: '/' },
-    teamsList: { path: 'teams-list' },
+    teamsList: { path: 'teams-list'},
     html: { path: 'html-page.html', isNative: true },
     generic: { path: 'generic' },
+    uiKitButtons: { path: 'ui-kit/buttons' },
 } as const

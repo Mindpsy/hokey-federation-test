@@ -44,6 +44,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/ui-kit/buttons': RouteRecordInfo<
+      '/ui-kit/buttons',
+      '/ui-kit/buttons',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -72,6 +79,12 @@ declare module 'vue-router/auto-routes' {
     'src/2-pages/teams-list/ui/index.vue': {
       routes:
         | '/teams-list/'
+      views:
+        | never
+    }
+    'src/2-pages/ui-kit/ui/buttons.vue': {
+      routes:
+        | '/ui-kit/buttons'
       views:
         | never
     }

@@ -7,6 +7,7 @@ const navLinks: NavLink[] = [
     { text: 'Teams (1st task)', href: '/teams-list', isNative: false },
     { text: '2th Generic Task', href: '/generic', isNative: false },
     { text: '3th Task', href: '/html-page.html', isNative: true },
+    { text: '4th Button Task', href: '/ui-kit/buttons', isNative: false },
 ]
 </script>
 

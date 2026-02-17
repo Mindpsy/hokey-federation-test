@@ -21,7 +21,8 @@
       "vite-plugin-vue-layouts/client",
       "./src/1-app/types.d.ts",
       "./src/1-app/typed-router.d.ts",
-      "./src/1-app/auto-imports.d.ts"
+      "./src/1-app/auto-imports.d.ts",
+      "./src/1-app/vue-macros.d.ts"
     ],
     "allowJs": true,
     "strict": true,
