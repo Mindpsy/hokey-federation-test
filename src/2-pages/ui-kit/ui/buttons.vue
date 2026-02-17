@@ -18,7 +18,7 @@ definePage({
             <ul class="preview-btn-list">
                 <li class="preview-btn-item">
                     <span class="preview-title overline-title">Primary</span>
-                    <vButton :variant="ButtonVariants.primary" text="Primary" type="button" height="136" width="187.1406" />
+                    <vButton :variant="ButtonVariants.primary" text="Primary" type="button" />
                 </li>
                 <li class="preview-btn-item">
                     <span class="preview-title overline-title">Secondary</span>
