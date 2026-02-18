@@ -44,9 +44,23 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/ui-kit/accordion': RouteRecordInfo<
+      '/ui-kit/accordion',
+      '/ui-kit/accordion',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/ui-kit/buttons': RouteRecordInfo<
       '/ui-kit/buttons',
       '/ui-kit/buttons',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/ui-kit/inputs': RouteRecordInfo<
+      '/ui-kit/inputs',
+      '/ui-kit/inputs',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -82,9 +96,21 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/2-pages/ui-kit/ui/accordion.vue': {
+      routes:
+        | '/ui-kit/accordion'
+      views:
+        | never
+    }
     'src/2-pages/ui-kit/ui/buttons.vue': {
       routes:
         | '/ui-kit/buttons'
+      views:
+        | never
+    }
+    'src/2-pages/ui-kit/ui/inputs.vue': {
+      routes:
+        | '/ui-kit/inputs'
       views:
         | never
     }

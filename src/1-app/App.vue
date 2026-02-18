@@ -8,6 +8,8 @@ const navLinks: NavLink[] = [
     { text: '2th Generic Task', href: '/generic', isNative: false },
     { text: '3th Task', href: '/html-page.html', isNative: true },
     { text: '4th Button Task', href: '/ui-kit/buttons', isNative: false },
+    { text: '5th Input Task', href: '/ui-kit/inputs', isNative: false },
+    { text: '6th Accordion', href: '/ui-kit/accordion', isNative: false },
 ]
 </script>
 

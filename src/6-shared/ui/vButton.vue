@@ -160,7 +160,7 @@ const customButtonSize = computed(() => {
 }
 
 .btn-warning {
-    color: #fff;
+    color: #1f2937;
     background-color: #f4bd0e;
     border-color: #f4bd0e;
 
@@ -192,18 +192,17 @@ const customButtonSize = computed(() => {
 }
 
 .btn-light {
-    color: #000;
-    background-color: #e5e9f2;
-    border-color: #e5e9f2;
+    color: #374151;
+    background-color: #f3f4f6;
+    border: 1px solid #f3f4f6;
 
     &:hover {
-        background-color: #c3c6ce;
-        border-color: #b7bac2;
-        color: #fff;
+        background-color: #e5e7eb;
+        border-color: #9ca3af;
 
         &:active {
-            background-color: #b7bac2;
-            border-color: #acafb6;
+            background-color: #d1d5db;
+            border-color: #6b7280;
         }
     }
 }

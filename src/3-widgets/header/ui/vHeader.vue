@@ -135,7 +135,7 @@ const links = computed(() => props.navLinks || [])
 
     &--active {
       color: var(--link-active-color);
-      font-weight: 600;
+      font-weight: 800;
 
       &::after {
         transform: scaleX(1);
